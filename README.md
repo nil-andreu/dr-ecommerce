@@ -17,5 +17,7 @@ First we will create a virtual environment to handle the different dependencies:
 
 We will use pipenv to handle the dependencies.
 Once it is installed, we will do: pipenv shell. This will generate us a Pipfile, which will have inside all of the dependencies.
+And now for installing django, we will use the pipenv: pipenv install django==3.2. (where 3.2. is the version we will use).
+This way we will handle easily the installations and dependencies with pip.
 
 We will start the project for Django: django-admin startproject ecommerce.
