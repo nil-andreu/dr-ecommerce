@@ -47,4 +47,12 @@ And then we put it inside of the INSTALLED_APPS:
 - rest_framework
 - rest_framework.authtoken; used for custom signup to be created.
 
-As well as we have to put the REST_FRAMEWORK configuration. It will create a default permission class.
+As well as we have to put the REST_FRAMEWORK configuration. It will create a default permission class. For authentication we will configure:
+
+- Basic Auth
+- Session Auth
+- Token Auth: the token based authentification is needed for doing custom auth
+
+## 4. Define URLs
+
+We will define the following URL: path('api-auth', include('rest_framework.urls'))
