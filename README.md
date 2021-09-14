@@ -32,9 +32,19 @@ Check the following documentation for the configuration: https://github.com/adam
 What we need to configure in settings:
 
 - APPS_INSTALLED
-- MIDDLEWARE
+- MIDDLEWAREs
 - CORS_ALLOW_ALL_ORIGINS: to true
 
 Some of them will change in production
 
 We will also in the settings set which are the allowed hosts, which for the moment is '\*' (all). In production i would only want that the React app to interact with it. This would work for public apis.
+
+## 3. Install Django Rest Framework
+
+We will install: pipenv install djangorestframework
+And then we put it inside of the INSTALLED_APPS:
+
+- rest_framework
+- rest_framework.authtoken; used for custom signup to be created.
+
+As well as we have to put the REST_FRAMEWORK configuration. It will create a default permission class.
