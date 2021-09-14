@@ -20,4 +20,11 @@ Once it is installed, we will do: pipenv shell. This will generate us a Pipfile,
 And now for installing django, we will use the pipenv: pipenv install django==3.2. (where 3.2. is the version we will use).
 This way we will handle easily the installations and dependencies with pip.
 
+Another way we could handle the dependencies is with a requirements.txt, where we could put: pip freeze > requirements.txt
+
+## 2. Django project
+
 We will start the project for Django: django-admin startproject ecommerce.
+
+We will also install the cors headers, which stands for Cross-Origin Resource Sharing. Which is needed when sending multiple requests from multiple resources. As some of the requests will be sended from postman and others from react.
+This is very common things to have in all full stack projects.
