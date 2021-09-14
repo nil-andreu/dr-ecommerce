@@ -28,3 +28,13 @@ We will start the project for Django: django-admin startproject ecommerce.
 
 We will also install the cors headers, which stands for Cross-Origin Resource Sharing. Which is needed when sending multiple requests from multiple resources. As some of the requests will be sended from postman and others from react.
 This is very common things to have in all full stack projects.
+Check the following documentation for the configuration: https://github.com/adamchainz/django-cors-headers.
+What we need to configure in settings:
+
+- APPS_INSTALLED
+- MIDDLEWARE
+- CORS_ALLOW_ALL_ORIGINS: to true
+
+Some of them will change in production
+
+We will also in the settings set which are the allowed hosts, which for the moment is '\*' (all). In production i would only want that the React app to interact with it. This would work for public apis.
