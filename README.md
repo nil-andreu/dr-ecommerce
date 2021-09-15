@@ -76,3 +76,21 @@ So we will do the following:
     And from settings we can reference to MEDIA_URL we just created. As well as we define the parameter of the document root in order to be able to store things there.
 
 So this way is how we handle the media resource
+
+## 6. Setting API structure
+
+Now we will create the app which will handle all the requests of the api.
+Inside of this app for the api, we will create further smaller apps:
+
+- Category
+- Order
+- Payment
+- Product
+- User
+
+This is, i will create an in the project folder which will be the api. And inside the different folders for the actual Django apps.
+This way we can ensure the scalability of the project and if we had different teams each one could focus on an app.
+
+So what we will do is: django-admin startapp api. Inside of the project directory.
+
+And then inside of the folder api, we want to create the before mention mini-apps.

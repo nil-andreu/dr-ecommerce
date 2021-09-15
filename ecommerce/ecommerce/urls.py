@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth', include('rest_framework.urls'))
 ]
+
+# And now we will do the configuration for handling the media
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+'''
+    Where we define the function static, which takes as parameters:
+    1. The first one is the MEDIA_URL, for which we access from settings
+    2. And the MEDIA_ROOT to be able to store the media files. And this is the root where the different types of media will be stored: images, videos, ...
+'''
