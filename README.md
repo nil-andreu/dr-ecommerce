@@ -56,3 +56,13 @@ As well as we have to put the REST_FRAMEWORK configuration. It will create a def
 ## 4. Define URLs
 
 We will define the following URL: path('api-auth', include('rest_framework.urls'))
+
+## 5. How to manage static files
+
+SQLite is not very good for storing images, but it can manage huge amounts of queries.
+So what we will do is create a folder, and inside of this folder we will have all of the images.
+
+So we will do the following:
+
+- Create a folder inside of the project directory called media.
+- Where inside of it we will create a new folder called images.
