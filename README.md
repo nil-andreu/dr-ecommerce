@@ -66,3 +66,13 @@ So we will do the following:
 
 - Create a folder inside of the project directory called media.
 - Where inside of it we will create a new folder called images.
+- Go to settings.py to configure the media. We will put the following: MEDIA_URL = '/media'
+- We will also define a relative path to this media folder: MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+- It needs to be mentioned in the URL as well. So for this we will go to the urls.py and do the following:
+  - from django.conf.urls.static import static
+  - from django.conf import settings
+  - And then define another urlpattern:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    And from settings we can reference to MEDIA_URL we just created. As well as we define the parameter of the document root in order to be able to store things there.
+
+So this way is how we handle the media resource
