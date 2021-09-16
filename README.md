@@ -94,3 +94,22 @@ This way we can ensure the scalability of the project and if we had different te
 So what we will do is: django-admin startapp api. Inside of the project directory.
 
 And then inside of the folder api, we want to create the before mention mini-apps.
+
+We must also go to the settings, and register the api app as well as the mini-apps.
+
+## 7. Configure root api
+
+So this api app is going to be the root for all the apis. As this app is inside of the settings of our project, it means that we can use it for the urls.py: path('api/', include('api.urls')). Which means that we are creating a new path to handle all the requests in the api urls.py file (which we need to create).
+
+Inside of the urls.py of our api app, we will import the authtoken for views, which we will use in the future.
+
+We will then create the array of urlpatterns. Where we will have the root/home route for the APIs. So it would be: localhost:8000/api/.
+
+For creating the home, we have to create it in the views. So we need to go inside of the views.py and create the home view function.
+We put the following: from django.http import JsonResponse
+And then define the view;
+
+    def home(request):
+        return JsonResponse({'info': 'Django course')
+
+Where we import the JsonResponse, and then we will return in the home (localhost:8000/api/) the json which will be the key-value pair.
