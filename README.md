@@ -131,4 +131,6 @@ All of this has to be inside of the category file. So we need to create:
 - urls.py
 - serializers.py
 
-And then we will create the model in models.py as well as register it in the admin.py. For this to work has to be inside of the INSTALLED_APPS, so we add the 'api.category', as it is inside of the folder of api and the category is the name of the app (as we can see if we go to the apps.py)
+And then we will create the model in models.py as well as register it in the admin.py. For this to work has to be inside of the INSTALLED_APPS, so we add the 'api.category', as it is inside of the folder of api and the category is the name of the app (as we can see if we go to the apps.py).
+
+Check that now for the version of Django of >=3.2., we need to edit the apps.py to put the name as 'api.category'. As if in INSTALLED APPS we put this and in the name is only 'category' it will give us an error.
