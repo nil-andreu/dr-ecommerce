@@ -113,3 +113,15 @@ And then define the view;
         return JsonResponse({'info': 'Django course')
 
 Where we import the JsonResponse, and then we will return in the home (localhost:8000/api/) the json which will be the key-value pair.
+
+## 8. Setting up category model and admin
+
+We will now work on the category. Which will have the following:
+
+<ol type="a">
+  <li>Create a model</li>
+  <li>Register in admin</li>
+  <li>Serializers.py file to serialize data in JSON</li>
+  <li>Views to get all category</li>
+  <li>Setup url</li>
+</ol>
