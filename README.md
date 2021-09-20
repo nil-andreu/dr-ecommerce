@@ -130,3 +130,5 @@ All of this has to be inside of the category file. So we need to create:
 
 - urls.py
 - serializers.py
+
+And then we will create the model in models.py as well as register it in the admin.py. For this to work has to be inside of the INSTALLED_APPS, so we add the 'api.category', as it is inside of the folder of api and the category is the name of the app (as we can see if we go to the apps.py)
