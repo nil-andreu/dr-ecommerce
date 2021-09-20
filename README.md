@@ -125,3 +125,8 @@ We will now work on the category. Which will have the following:
   <li>Views to get all category</li>
   <li>Setup url</li>
 </ol>
+
+All of this has to be inside of the category file. So we need to create:
+
+- urls.py
+- serializers.py
