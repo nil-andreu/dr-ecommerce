@@ -200,8 +200,8 @@ And the code that we are putting then is the following:
   router.register(r'', views.CategoryViewSet)
 
   urlpatterns = [
-  path('', include(router.urls))
-]
+    path('', include(router.urls))
+  ]
 ´´´
 
 So in the urls, we follow this process:
