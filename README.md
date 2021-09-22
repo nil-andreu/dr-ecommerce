@@ -146,7 +146,9 @@ And we create the following class, which will be the serializer:
 
 ```{python}
   class CategorySerializer(serializers.Serializer):
-      name = serializers.CharField()
-      created_at = serializers.DateTimeField()
-      updated_at = serializers.DateTimeField()
+    # We define which is the model that we want to convert to JSON, as well as which fields we want to convert
+    class Meta:
+        model = Category
+        field = ('name, description')
+
 ```
