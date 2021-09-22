@@ -152,3 +152,42 @@ And we create the following class, which will be the serializer:
         field = ('name, description')
 
 ```
+
+## 10. Setting up views and url
+
+We want to work now with the viewsets and the router.
+
+First we will do the importations:
+
+```{python}
+  from rest_framework import viewsets
+  from .serializers import CategorySerializer
+  from .models import Category
+```
+
+Where the viewsets will be used to create the api view.
+
+Then we define the CategoryViewSet. The viewset that we are going to define is by using the model Category, for this we use the viewsets.ModelViewset.
+
+```{python}
+  class CategoryViewSet(viewsets.ModelViewSet):
+    # We have to mention two things:
+    # 1. Which is the query, the data that we bring from the database
+    # 2. Based on the serializer we have wrote, convert this data into JSON
+
+    # 1. Build the query
+    queryset = Category.objects.all().order_by('name')
+
+    # 2. Define the class responsible for serializing the data
+    serializer_class = CategorySerializer
+```
+
+So for creating the api, we follow this process:
+
+<ol type="a">
+  <li>Create a model in <bold>models.py</bold></li>
+  <li>Register in admin in <bold>admin.py</bold></li>
+  <li><bold>Serializers.py</bold> file to serialize data in JSON</li>
+  <li>Views to get all category inside of <bold>views.py</bold></li>
+  <li>Setup url inside of the <bold>urls.py</bold></li>
+</ol>
