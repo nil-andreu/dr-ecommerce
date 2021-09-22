@@ -190,17 +190,17 @@ This url of the category is going to be handler by the django rest framework rou
 And the code that we are putting then is the following:
 
 ´´´{python}
-from rest_framework import routers
-from django.urls import path, include # We will also need to import the django urls
+  from rest_framework import routers
+  from django.urls import path, include # We will also need to import the django urls
 
-from . import views # We need to import all the views, so we are importing the full file
+  from . import views # We need to import all the views, so we are importing the full file
 
-router = routers.DefaultRouter()
+  router = routers.DefaultRouter()
 
-router.register(r'', views.CategoryViewSet)
+  router.register(r'', views.CategoryViewSet)
 
-urlpatterns = [
-path('', include(router.urls))
+  urlpatterns = [
+  path('', include(router.urls))
 ]
 ´´´
 
