@@ -169,7 +169,7 @@ Where the viewsets will be used to create the api view.
 
 Then we define the CategoryViewSet. The viewset that we are going to define is by using the model Category, for this we use the viewsets.ModelViewset.
 
-```{python}
+````{python}
   class CategoryViewSet(viewsets.ModelViewSet):
     # We have to mention two things:
     # 1. Which is the query, the data that we bring from the database
@@ -180,7 +180,7 @@ Then we define the CategoryViewSet. The viewset that we are going to define is b
 
     # 2. Define the class responsible for serializing the data
     serializer_class = CategorySerializer
-```
+```{python}
 
 And now we want to set the url. For this, remember that in the urls.py of the project, we defined a path named 'api/', which includes the api.urls.
 Then in the api.urls, we defined: path('', home, name="api_home").
@@ -201,8 +201,8 @@ router.register(r'', views.CategoryViewSet)
 urlpatterns = [
 path('', include(router.urls))
 ]
-
 ´´´
+
 So in the urls, we follow this process:
 
 - Create the router with a type (in our case DefualtRouter)
@@ -218,3 +218,4 @@ And for creating the whole api, we follow this process:
   <li>Views to get all category inside of <bold>views.py</bold></li>
   <li>Setup url inside of the <bold>urls.py</bold></li>
 </ol>
+````
