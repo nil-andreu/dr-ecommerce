@@ -169,7 +169,7 @@ Where the viewsets will be used to create the api view.
 
 Then we define the CategoryViewSet. The viewset that we are going to define is by using the model Category, for this we use the viewsets.ModelViewset.
 
-````{python}
+```{python}
   class CategoryViewSet(viewsets.ModelViewSet):
     # We have to mention two things:
     # 1. Which is the query, the data that we bring from the database
