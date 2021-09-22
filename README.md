@@ -219,4 +219,3 @@ And for creating the whole api, we follow this process:
   <li>Views to get all category inside of <bold>views.py</bold></li>
   <li>Setup url inside of the <bold>urls.py</bold></li>
 </ol>
-````
