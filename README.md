@@ -134,3 +134,19 @@ All of this has to be inside of the category file. So we need to create:
 And then we will create the model in models.py as well as register it in the admin.py. For this to work has to be inside of the INSTALLED_APPS, so we add the 'api.category', as it is inside of the folder of api and the category is the name of the app (as we can see if we go to the apps.py).
 
 Check that now for the version of Django of >=3.2., we need to edit the apps.py to put the name as 'api.category'. As if in INSTALLED APPS we put this and in the name is only 'category' it will give us an error.
+
+## 9. Serialize data in Django
+
+Django is about easying the syntax, and not focus on the back of the things. It is all about an abstraction.
+
+So we will need to do now the serializations.
+For this, we are going to create the serializator. We go to the serializers.py file, and we import: from rest_framework import serializers, as well as the model we defined.
+
+And we create the following class, which will be the serializer:
+
+```{python}
+  class CategorySerializer(serializers.Serializer):
+      name = serializers.CharField()
+      created_at = serializers.DateTimeField()
+      updated_at = serializers.DateTimeField()
+```
