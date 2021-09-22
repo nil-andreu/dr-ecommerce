@@ -186,7 +186,40 @@ And now we want to set the url. For this, remember that in the urls.py of the pr
 Then in the api.urls, we defined: path('', home, name="api_home").
 But now we need to define another path in this url of the api: path('category/', include('api.category.urls')). So this will search for the urls in the path of api/category/ inside of the urls of the app category.
 
-So for creating the api, we follow this process:
+This url of the category is going to be handler by the django rest framework router: from rest_framework import router.
+And the code that we are putting then is the following:
+´´´ {python}
+from rest_framework import routers
+from django.urls import path, include # We will also need to import the django urls
+
+from . import views # We need to import all the views, so we are importing the full file
+
+# We will use the default router
+
+router = routers.DefaultRouter()
+
+# And now we register the before route in a path. This path is going to be the empty one
+
+router.register(r'', views.CategoryViewSet)
+
+# So the full path is being: 'api/category/'.
+
+# And now we add this route to the urlpatterns
+
+urlpatterns = [
+path('', include(router.urls))
+]
+
+# We do this step because we are using the DefaultRouter type
+
+´´´
+So in the urls, we follow this process:
+
+- Create the router with a type (in our case DefualtRouter)
+- Register this router in a path with a Viewset
+- And then add this router to the urlpatterns (we do this because we are using the DefualtRoute)
+
+And for creating the whole api, we follow this process:
 
 <ol type="a">
   <li>Create a model in <bold>models.py</bold></li>
