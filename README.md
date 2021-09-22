@@ -180,7 +180,7 @@ Then we define the CategoryViewSet. The viewset that we are going to define is b
 
     # 2. Define the class responsible for serializing the data
     serializer_class = CategorySerializer
-```{python}
+```
 
 And now we want to set the url. For this, remember that in the urls.py of the project, we defined a path named 'api/', which includes the api.urls.
 Then in the api.urls, we defined: path('', home, name="api_home").
@@ -188,6 +188,7 @@ But now we need to define another path in this url of the api: path('category/',
 
 This url of the category is going to be handler by the django rest framework router: from rest_framework import router.
 And the code that we are putting then is the following:
+
 ´´´ {python}
 from rest_framework import routers
 from django.urls import path, include # We will also need to import the django urls
