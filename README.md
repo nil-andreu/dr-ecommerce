@@ -182,6 +182,10 @@ Then we define the CategoryViewSet. The viewset that we are going to define is b
     serializer_class = CategorySerializer
 ```
 
+And now we want to set the url. For this, remember that in the urls.py of the project, we defined a path named 'api/', which includes the api.urls.
+Then in the api.urls, we defined: path('', home, name="api_home").
+But now we need to define another path in this url of the api: path('category/', include('api.category.urls')). So this will search for the urls in the path of api/category/ inside of the urls of the app category.
+
 So for creating the api, we follow this process:
 
 <ol type="a">
