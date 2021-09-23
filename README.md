@@ -189,7 +189,7 @@ But now we need to define another path in this url of the api: path('category/',
 This url of the category is going to be handler by the django rest framework router: from rest_framework import router.
 And the code that we are putting then is the following:
 
-´´´{python}
+```{python}
   from rest_framework import routers
   from django.urls import path, include # We will also need to import the django urls
 
@@ -202,7 +202,7 @@ And the code that we are putting then is the following:
   urlpatterns = [
     path('', include(router.urls))
   ]
-´´´
+```
 
 So in the urls, we follow this process:
 
