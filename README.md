@@ -219,3 +219,14 @@ And for creating the whole api, we follow this process:
   <li>Views to get all category inside of <bold>views.py</bold></li>
   <li>Setup url inside of the <bold>urls.py</bold></li>
 </ol>
+
+Now if we look to the localhost:8000/api/category/, we will see what the Django Rest Framework provides for default for our API a template for making the queries.
+
+We could test this api by creating some example Categories. And then making the query with Postman to the url before mentioned. 
+Also if for the moment we call to /api/, we will see what we stated a JsonResponse:
+```{javascript}
+  {
+    "info": "Django course"
+  }
+```
+
