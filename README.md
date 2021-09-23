@@ -230,3 +230,21 @@ Also if for the moment we call to /api/, we will see what we stated a JsonRespon
     "info": "Django course"
   }
 ```
+
+## 11. Making the same process for products
+
+Now we are going to same process as before for the products.
+
+In the model of product, we want the following fields:
+- Name
+- Description
+- Price
+- Stock
+- is_active
+- image
+- category: which is going to be a foreign key to Category, for this we need to import from api.category.models.
+- created_at
+
+Once that the model is created, we are going to register it in the admin.
+
+Then we have to create the serializer. Once created, we create the view.
