@@ -145,13 +145,14 @@ For this, we are going to create the serializator. We go to the serializers.py f
 And we create the following class, which will be the serializer:
 
 ```{python}
-  class CategorySerializer(serializers.Serializer):
+  class CategorySerializer(serializers.HyperlinkedModelSerializer):
     # We define which is the model that we want to convert to JSON, as well as which fields we want to convert
     class Meta:
         model = Category
-        field = ('name, description')
+        fields = ('name', 'description')
 
 ```
+We are using the HyperlinkedModelSerializer because if we use the normal Serializer, we will not be able to obtain the data when making get requests.
 
 ## 10. Setting up views and url
 
@@ -229,4 +230,4 @@ Also if for the moment we call to /api/, we will see what we stated a JsonRespon
     "info": "Django course"
   }
 ```
-
+<img src="./ecommerce/api/category/imagesREADME/image1.png">
