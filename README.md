@@ -324,6 +324,12 @@ And finally we create the urls:
 ]
 ```
 
+## 12. Setting up Custom user in model
+
+
+
 ## Auth
 
 For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
+
+Yoou can also look for the tutorial: https://www.youtube.com/watch?v=wlcCvzOLL8w&list=RDCMUC1mxuk7tuQT2D0qTMgKji3w&start_radio=1.
