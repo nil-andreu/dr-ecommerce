@@ -230,4 +230,3 @@ Also if for the moment we call to /api/, we will see what we stated a JsonRespon
     "info": "Django course"
   }
 ```
-<img src="./ecommerce/api/category/imagesREADME/image1.png">
