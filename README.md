@@ -269,18 +269,31 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 ```
+When making this migration, we will need to install Pillow. Which is a python package needed for handling the images.
+
 
 Then we have to create the serializer. Once created, we create the view.
+But note that for the case that we are handling an image, we need to make some changes. As we want to make sure that this serializer will give us the full url, so we will be able then to access it. For handling this, we will need to create a new field inside the serializer. Which is the one that will be handling the image.
 ```{python}
   from rest_framework import serializers
   from .models import Product
 
   class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    # We need to crete the field of Image, as for images we need to make an specialized field of Rest Framework
+    image = serializers.ImageField(max_length=None, allow_empty_file=False, allow_null=False, required=False)
+    # We are putting the following params:
+    # - max_length: None. There is not a max length, otherwise our url could not be complete
+    # - allow_empty_file: False
+    # - allow_null:True.
+    # - required: False.
+    # Those parameters are the required ones, we can check in the documentation
+
     class Meta:
         model = Product
-        fields = ('__all__')
+        fields = ('name', 'description', 'price', 'image', 'category')
+        # We also do not want all the fields, as for example the created_add is only for administration of the ecommerce
 ```
-Note that we are using the '__all__' in the fields, to indicate we want all of them.
+Note that we are not using the '__all__' in the fields, to indicate we want all of them. As we are creating a new field which is the image field.
 
 And for creating the viewset:
 ```{python}
