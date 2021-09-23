@@ -5,5 +5,5 @@ from .serializers import ProductSerializer
 
 # Create your views here.
 class ProductViewset(viewsets.ModelViewSet):
-    viewset = Product.objects.all().order_by('-price')
-    serializer = ProductSerializer
+    queryset = Product.objects.all().order_by('-price')
+    serializer_class = ProductSerializer

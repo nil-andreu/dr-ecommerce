@@ -247,4 +247,70 @@ In the model of product, we want the following fields:
 
 Once that the model is created, we are going to register it in the admin.
 
+```{python}
+  from django.db import models
+from api.category.models import Category
+
+# Create your models here.
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=250)
+    price = models.IntegerField()
+    stock = models.IntegerField()
+    is_active = models.BooleanField()
+
+    # For image, we have to set upload_to, where is the path that will search for the images. 
+    image = models.ImageField(upload_to='images/') 
+
+    # This way we can relate tables in different apps
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True) # On delete, we do not want to delete all the category
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+
+    def __str__(self):
+        return self.name
+```
+
 Then we have to create the serializer. Once created, we create the view.
+```{python}
+  from rest_framework import serializers
+  from .models import Product
+
+  class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('__all__')
+```
+Note that we are using the '__all__' in the fields, to indicate we want all of them.
+
+And for creating the viewset:
+```{python}
+  from django.shortcuts import render
+  from rest_framework import viewsets
+  from .models import Product
+  from .serializers import ProductSerializer
+
+  # Create your views here.
+  class ProductViewset(viewsets.ModelViewSet):
+    # Remember that we need to define the query
+    queryset = Product.objects.all().order_by('-price')
+    serializer_class = ProductSerializer
+```
+
+And finally we create the urls:
+```{python}
+  from django.urls import path, include
+  from rest_framework import routers
+
+  from . import views
+
+  router = routers.DefaultRouter()
+  router.register(r'', views.ProductViewset)
+
+  urlpatterns = [
+    path('', include(router.urls))
+]
+```
+
+## Auth
+
+For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
