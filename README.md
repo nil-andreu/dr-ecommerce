@@ -249,10 +249,10 @@ Once that the model is created, we are going to register it in the admin.
 
 ```{python}
   from django.db import models
-from api.category.models import Category
+  from api.category.models import Category
 
-# Create your models here.
-class Product(models.Model):
+  # Create your models here.
+  class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     price = models.IntegerField()
@@ -270,7 +270,6 @@ class Product(models.Model):
         return self.name
 ```
 When making this migration, we will need to install Pillow. Which is a python package needed for handling the images.
-
 
 Then we have to create the serializer. Once created, we create the view.
 But note that for the case that we are handling an image, we need to make some changes. As we want to make sure that this serializer will give us the full url, so we will be able then to access it. For handling this, we will need to create a new field inside the serializer. Which is the one that will be handling the image.
@@ -323,6 +322,9 @@ And finally we create the urls:
     path('', include(router.urls))
 ]
 ```
+
+
+
 
 ## Auth
 
