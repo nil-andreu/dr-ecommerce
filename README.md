@@ -325,11 +325,28 @@ And finally we create the urls:
 
 ## 12. Setting up Custom user in model
 
+We will use the Django user auth handling.
+
+Now what will happen also is that the serialization will be tricky, as there is data that will also be sent to the server (not only receiving as far it has happened).
+
+First of all, we will create the model of the User inheriting the User model already created by the Django. We will inherit the default, as in the future we might want to sign up with other fields:
+- Age
+- Year of birth
+- ...
+
+The code for doing this is the following:
+```{python}
+  from django.contrib.auth.models import AbstractUser
+
+  class User(AbstractUser):
+    pass
+```
+
+We will create this inside of the user mini-app.
 
 
 
-
-## Auth
+#### Auth
 
 For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
 
