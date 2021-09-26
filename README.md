@@ -379,6 +379,8 @@ from django.contrib.auth.models import AbstractUser
     session_token = models.CharField(max_length=10, default=0)
 ```
 
+Then we have to update this model in the admin panel.
+
 
 
 #### Auth
