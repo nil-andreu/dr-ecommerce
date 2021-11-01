@@ -144,6 +144,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # For Django cors
 CORS_ALLOW_ALL_ORIGINS = True
 
+# Handling the error of custom user
+AUTH_USER_MODEL = "user.CustomUser"
+
 # For Django Rest Framework
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

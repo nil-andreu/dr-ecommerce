@@ -355,7 +355,7 @@ from django.contrib.auth.models import AbstractUser
   from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
-  class User(AbstractUser):
+  class CustomUser(AbstractUser):
     name = models.CharField(max_length=50, default='Anonymous') # If there is no name, the default will be "Anonymous"
     # In the case of the email, i want this to be unique
     email = models.EmailField(max_length=200, unique=True)
@@ -395,6 +395,25 @@ But the good flow we need to follow now is:
   <li><bold>Register</bold> app in the admin</li>
   <li><bold>Debug it</bold></li>
 </ol>
+This is the flow that the majority of companies like to follow, as half baked applications of the Django, if you plug it into the admin, they are going to potentially result in the error.
+
+WE COULD DO THE FOLLOWING:
+For solving these errors of dependency, i need to go to settings.py, and add the following line of code to set how we will handle the users:
+```{python}
+  AUTH_USER_MODEL = "user.CustomUser"
+```
+As we are actually writing custom user model.
+And we are saying that from the user app, use CustomUser.
+Once i have done this, i can makemigrations and migrate. And then run the server again.
+
+BUT INSTEAD WE WILL FINISH THE USER APP AND THEN WILL DO THE ADMIN REGISTRATION AND ADDING IN INSTALLED_APPS
+How now we are going to serialize it.
+Remember, that in python i can use ** operator, which allows us to take a dictionary of key-value pairs and unpack it into keyword arguments in a function call. This operator is used when we have a list of multiple arguments taken up in a function, and by using these operator.
+
+Since data is coming up in json format, we will need to deal with that for registering for example users. We can access the data of a serializer with serializer.validated_data.
+So in the serializer, we might want to create two methods:
+- .create():
+- .update(): 
 
 
 
