@@ -1,6 +1,6 @@
 ## Ecommerce with React & Django
 
-In this repository, I will be building a full-stack ecommerce with React.js for the frontend, and Django for the backend.
+In this repository, I will be building a full-stack ecommerce with React.js for the frontend, and Django for the backend. It will include payment gateway with Braintree.
 
 We assume that we have a client, and it has the following goal: "I want to sell t-shirts online".
 And we also know that it wants a separate login for admin and for the customer (where the admin will be the one of default panel of Django, and we will build one for the customer).
@@ -352,7 +352,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
   from django.db import models
-from django.contrib.auth.models import AbstractUser
+  from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
   class User(AbstractUser):
@@ -366,8 +366,6 @@ from django.contrib.auth.models import AbstractUser
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
-
     # I am not signing up the user based on the username, but rather
     # i will be modifying this username field
     USERNAME_FIELD = 'email' # This username field will now be validated with the email
@@ -375,7 +373,7 @@ from django.contrib.auth.models import AbstractUser
     # And also have some fields that have to be required, in our case is none
     REQUIRED_FIELDS = []
 
-    # We will need to work on the session based toke, so we will create this
+    # We will need to work on the session based token, so we will create this
     session_token = models.CharField(max_length=10, default=0)
 ```
 

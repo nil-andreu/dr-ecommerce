@@ -13,5 +13,5 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('name', 'description', 'price', 'image', 'category')
+        fields = ('name', 'description', 'price', 'category')
         # We also do not want all the fields, as for example the created_add is only for administration of the ecommerce
