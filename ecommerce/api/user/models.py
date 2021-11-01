@@ -13,8 +13,6 @@ class User(AbstractUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
-
     # I am not signing up the user based on the username, but rather
     # i will be modifying this username field
     USERNAME_FIELD = 'email' # This username field will now be validated with the email
@@ -22,5 +20,5 @@ class User(AbstractUser):
     # And also have some fields that have to be required, in our case is none
     REQUIRED_FIELDS = []
 
-    # We will need to work on the session based toke, so we will create this
+    # We will need to work on the session token based, so we will create this
     session_token = models.CharField(max_length=10, default=0)

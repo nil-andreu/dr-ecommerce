@@ -379,6 +379,23 @@ from django.contrib.auth.models import AbstractUser
 
 Then we have to update this model in the admin panel.
 
+What happens now is that we can't follow the basic flow of:
+- create model
+- register in admin
+- serializers.py
+- views
+- and then setup urls.py
+
+This changes drastically when you are dependent on some existing models and there is a reason for that: in Django admin the models of Groups and Users are already given to me. So if i somehow depend on them, and my app is not finished yet, i am going to have a conflict.
+So if the model is totally new, it does not depend on any abstract user, any additional functionality is provided by Django, then the before flow is great.
+But the good flow we need to follow now is:
+<ol type="a">
+  <li>Create a model based on an existing model<bold>Abstract User</bold></li>
+  <li>Serialize, vies and urls </li>
+  <li><bold>Register</bold> app in the admin</li>
+  <li><bold>Debug it</bold></li>
+</ol>
+
 
 
 #### Auth
