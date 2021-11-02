@@ -410,11 +410,30 @@ BUT INSTEAD WE WILL FINISH THE USER APP AND THEN WILL DO THE ADMIN REGISTRATION 
 How now we are going to serialize it.
 Remember, that in python i can use ** operator, which allows us to take a dictionary of key-value pairs and unpack it into keyword arguments in a function call. This operator is used when we have a list of multiple arguments taken up in a function, and by using these operator.
 
-Since data is coming up in json format, we will need to deal with that for registering for example users. We can access the data of a serializer with serializer.validated_data.
+Since data is coming up in json format, we will need to deal with that for registering for example users. We can access the data of a serializer with serializer.validated_data --> from this validated data that is in a dictionary i can pop off each of the keys with the ** operator: **validated_data.
 So in the serializer, we might want to create two methods:
 - .create():
 - .update(): 
 
+Example of ** operator:
+```{python}
+  class Man:
+    name = "John"
+  
+  # Create a new object
+  one = Man()
+  print(one.name) # And would print John
+
+  # We can set an attribute with the following
+  setattr(one, 'name', 'Nil')
+  '''Where setattr takes the following parameters:
+  - the variable we want to change
+  - the property i want to change
+  - the new value i want for that property
+  '''
+```
+
+So now we are going to create the serializers.py and urls.py. And go to the serializers.py
 
 
 #### Auth
