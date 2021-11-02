@@ -433,7 +433,21 @@ Example of ** operator:
   '''
 ```
 
-So now we are going to create the serializers.py and urls.py. And go to the serializers.py
+So now we are going to create the serializers.py and urls.py. And go to the serializers.py.
+
+Then we go to the views, where we are going to sign in the user, sign out, generate the token, ...
+For the generation of the token:
+```{python}
+  # chr(97) will be giving me a, if chr(98) is giving me b
+  # This method creates letters based on numbers
+  import random
+
+  # Random has a method of SystemRandom, and this has a method which pass a list --> and will choose randomly a value from the lsit
+  # random.SystemRandom().choice(['a','b','c'])
+  random.SystemRandom().choice([chr(i) for i in range(97, 123)])
+  # So i defined a loop for range 97 to 123 (the last one is not inclusive) and choose between those numbers
+```
+Knowing this, we will create in views a method for the string generation.
 
 
 #### Auth
