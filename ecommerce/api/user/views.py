@@ -51,7 +51,14 @@ def signin(request):
     # Now i will try to grab the user from the database and match its password
     # As we are making a request from another origin, we must apply csrf_exempt --> applied just before this view
     try:
-        pass
+        # 1. Grap the user, obtained with the email field to be equal to username
+        user = UserModel.objects.get(email=username)
+
+        # 2. We need to now match the password
+        if user.check_password(password):
+            usr_dict = UserModel.objects.filter(email=username).values().first
+            # Where the filter for the one that matches the username, we obtain the values of it and obtain the first
+
     except UserModel.DoesNotExist: # In the case it does not exist
         return JsonResponse({"error":"Invalid email"})
 
