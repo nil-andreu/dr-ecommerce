@@ -449,7 +449,9 @@ For the generation of the token:
 ```
 Knowing this, we will create in views a method for the string generation.
 
-For the sign up of the user, we need to do some validation. For this, we can go to the web of regex.com
+For the sign up of the user, we need to do some validation. For this, we can go to the web of regexr.com.
+One validator we can use is: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?
+We will go to views.py and check
 
 
 #### Auth
