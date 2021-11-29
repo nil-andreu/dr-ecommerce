@@ -54,10 +54,34 @@ def signin(request):
         # 1. Grap the user, obtained with the email field to be equal to username
         user = UserModel.objects.get(email=username)
 
-        # 2. We need to now match the password
+        # 2. We need to now check the password
         if user.check_password(password):
             usr_dict = UserModel.objects.filter(email=username).values().first
             # Where the filter for the one that matches the username, we obtain the values of it and obtain the first
+            usr_dict.pop('password')
+
+            # We want to see if in this user we got our session token or not. If already there, meaning the 
+            # user is already logged in, we will need ot work on that
+            if user.session_token != "0":
+                user.session_token = "0" # For the next time when the user logs in, at least then he gets a 0.
+                # This way the user will only get once the error that the session is made
+                user.save
+                return JsonResponse({"error":"Previous session exists"})
+            
+            # Now is the part that we generate the token
+            token = generate_session_token()
+            user.session_token = token # Assing the field of the table session_token to the token we just generated
+            user.save # We save the token into the user table
+
+            # And finally do the default Django login
+            login(request, user) # We login the user
+
+            # If we do now throw this token back, then it is not going to be working
+            # We will also pass the information fields of the user that has logged in (we already popped off the password field, so it is secure to pass this way)
+            return JsonResponse({"token":token,"user":usr_dict}) 
+
+        else:
+            return JsonResponse({"error":"Invalid password"})
 
     except UserModel.DoesNotExist: # In the case it does not exist
         return JsonResponse({"error":"Invalid email"})
