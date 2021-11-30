@@ -456,6 +456,28 @@ We will go to views.py and check
 ### 13. Logout
 We have to define the signout method, which we will see in the function of signout(request, id).
 
+```{python}
+def signout(request, id):
+    # We will use at the start the default signout
+    logout(request)
+
+    # And nowe we have to handle the token
+    UserModel = get_user_model()
+
+    try:
+        # We obtain the user that has logged out
+        user = UserModel.objects.get(pk=id)
+        # Redefine its token
+        user.session_token = "0"
+        # And update this value in the database
+        user.save()
+
+    except UserModel.DoesNoeExist:
+        return JsonResponse({"error":"Invalid user ID"})
+    
+    return JsonResponse({"success":"Logout Success"})
+```
+
 ### 14. Define viewset and permissions
 When we are allowing someone to create an account in Django, we are using the Django authentication. And we need to take care of the permissions.
 

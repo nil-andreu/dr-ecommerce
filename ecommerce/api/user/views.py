@@ -103,7 +103,6 @@ def signout(request, id):
         # And update this value in the database
         user.save()
 
-
     except UserModel.DoesNoeExist:
         return JsonResponse({"error":"Invalid user ID"})
     
