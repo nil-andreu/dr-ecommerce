@@ -454,11 +454,18 @@ One validator we can use is: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=
 We will go to views.py and check
 
 ### 13. Logout
+We have to define the signout method, which we will see in the function of signout(request, id).
+
+### 14. Define viewset and permissions
 When we are allowing someone to create an account in Django, we are using the Django authentication. And we need to take care of the permissions.
 
 There are different permissions: AllowAny, isAuthenticated, ...
 
 For workin on this part, we will go to the views.py and create UserViewSet.
+
+### 15. Define URL
+### 16. Registering User App in Admin
+This will create the basic problem in Django, which is when you try to customize the user.
 
 
 #### Auth

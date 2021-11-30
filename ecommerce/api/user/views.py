@@ -88,6 +88,28 @@ def signin(request):
     except UserModel.DoesNotExist: # In the case it does not exist
         return JsonResponse({"error":"Invalid email"})
 
+def signout(request, id):
+    # We will use at the start the default signout
+    logout(request)
+
+    # And nowe we have to handle the token
+    UserModel = get_user_model()
+
+    try:
+        # We obtain the user that has logged out
+        user = UserModel.objects.get(pk=id)
+        # Redefine its token
+        user.session_token = "0"
+        # And update this value in the database
+        user.save()
+
+
+    except UserModel.DoesNoeExist:
+        return JsonResponse({"error":"Invalid user ID"})
+    
+    return JsonResponse({"success":"Logout Success"})
+
+
 class UserViewSet(viewsets.ModelViewSet):
     # If someone creates an account, will have access to everything
     permission_classes_by_action = {'create': [AllowAny]}
@@ -98,7 +120,7 @@ class UserViewSet(viewsets.ModelViewSet):
     # And now we define a method on how to grap those permissions
     def get_permissions(self):
         try:
-            return []
+            return [] #For allowing any we could simply put an empty list
 
 
         except KeyError: # In the exception we give the default permission
