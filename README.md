@@ -486,6 +486,12 @@ There are different permissions: AllowAny, isAuthenticated, ...
 For workin on this part, we will go to the views.py and create UserViewSet.
 
 ### 15. Define URL
+If we look at the project urls, we can see that we have the url of "api-auth/". This is the one we will use to actally interact with the user with REST API.
+
+But what we will use is the one of the API. So then in the urls of api, we will add the one for the user.
+
+Then we open up the urls.py file in the user.
+
 ### 16. Registering User App in Admin
 This will create the basic problem in Django, which is when you try to customize the user.
 

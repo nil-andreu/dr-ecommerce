@@ -108,7 +108,6 @@ def signout(request, id):
     
     return JsonResponse({"success":"Logout Success"})
 
-
 class UserViewSet(viewsets.ModelViewSet):
     # If someone creates an account, will have access to everything
     permission_classes_by_action = {'create': [AllowAny]}
