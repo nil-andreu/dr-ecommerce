@@ -1,5 +1,6 @@
 # FOR REGEX
 from rest_framework import viewsets
+from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 from .serializers import UserSerializer
 from .models import CustomUser
@@ -65,13 +66,13 @@ def signin(request):
             if user.session_token != "0":
                 user.session_token = "0" # For the next time when the user logs in, at least then he gets a 0.
                 # This way the user will only get once the error that the session is made
-                user.save
+                user.save()
                 return JsonResponse({"error":"Previous session exists"})
             
             # Now is the part that we generate the token
             token = generate_session_token()
             user.session_token = token # Assing the field of the table session_token to the token we just generated
-            user.save # We save the token into the user table
+            user.save() # We save the token into the user table
 
             # And finally do the default Django login
             login(request, user) # We login the user
@@ -83,9 +84,24 @@ def signin(request):
         else:
             return JsonResponse({"error":"Invalid password"})
 
+    # In the case that the try fails
     except UserModel.DoesNotExist: # In the case it does not exist
         return JsonResponse({"error":"Invalid email"})
 
+class UserViewSet(viewsets.ModelViewSet):
+    # If someone creates an account, will have access to everything
+    permission_classes_by_action = {'create': [AllowAny]}
 
+    queryset = CustomUser.objects.all().order_by("id")
+    serializer_class = UserSerializer
+
+    # And now we define a method on how to grap those permissions
+    def get_permissions(self):
+        try:
+            return []
+
+
+        except KeyError: # In the exception we give the default permission
+            return [permission() for permission in self.permission_classes]
 
 

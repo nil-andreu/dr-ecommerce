@@ -453,6 +453,13 @@ For the sign up of the user, we need to do some validation. For this, we can go 
 One validator we can use is: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
 We will go to views.py and check
 
+### 13. Logout
+When we are allowing someone to create an account in Django, we are using the Django authentication. And we need to take care of the permissions.
+
+There are different permissions: AllowAny, isAuthenticated, ...
+
+For workin on this part, we will go to the views.py and create UserViewSet.
+
 
 #### Auth
 For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
