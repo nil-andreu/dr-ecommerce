@@ -31,7 +31,7 @@ def generate_session_token(length=20):
 @csrf_exempt
 def signin(request):
     # We identify whether it is a post or get
-    if not request.method is "POST":
+    if not request.method == "POST":
         return JsonResponse({'error':'Send a post request with valid parameter only'})
 
     # We will grap the information of the post method made to sign up

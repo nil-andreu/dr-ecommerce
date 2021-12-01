@@ -573,6 +573,8 @@ If we make a get on /api/user/, we would obtain the user we created in the step 
 ```
 Note that the password does not appear.
 
+For postman, we set the content-type in the Headers of application/json. 
+Then we go to the Body part, and select Raw. Here, we can see that if we post empty braces {}. For the api/user/ will return the error that email and password are required.
 
 Remember that for the login, we have to make a POST request. 
 
