@@ -611,8 +611,11 @@ For the key we put email and password. And in the Value goes the values in each 
 Once we log in a user, if we watch the fields inside of the admin panel we would see that a session token would be assigned.
 
 ### 19. Testing Logout
-Now for logot it needs to be a get request.
+Now for logout it needs to be a get request.
 For this we need to send the id of the user as well.
+
+### 20. Managing orders
+We first are going to create the model of the orders.
 
 
 Remember that for the login, we have to make a POST request. 
