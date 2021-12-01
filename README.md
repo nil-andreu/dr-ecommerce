@@ -554,7 +554,7 @@ This way we can create a superuser without python manage.py createsuperuser nor 
 
 Another solution would be to run directly the query of sql.
 
-### 18. Running a Test of Sign in and Log Out
+### 18. Running a Test of Sign in 
 We will have the following url: /api/user/ and then login/ or logout/<int:id>/.
 
 If we make a get on /api/user/, we would obtain the user we created in the step before:
@@ -574,7 +574,43 @@ If we make a get on /api/user/, we would obtain the user we created in the step 
 Note that the password does not appear.
 
 For postman, we set the content-type in the Headers of application/json. 
-Then we go to the Body part, and select Raw. Here, we can see that if we post empty braces {}. For the api/user/ will return the error that email and password are required.
+Then we go to the Body part, and select Raw. Here, we can see that if we post empty braces {}. For the api/user/ will return for this POST the error that email and password are required.
+As the password and email are for this moment the only fields that can't be null.
+
+So now we are going to pass a correct one to the same url of api/user/:
+```{json}
+{
+    "email": "hitesh@lco.dev",
+    "password":"12345"
+}
+```
+What this would generate a new user.
+
+Note that if we put:
+```{json}
+{
+    "email": "hitesh@lco.dev",
+    "password":"12345",
+    "is_superuser":"True",
+}
+```
+This will return that effectively is true. But if we check for this user in the admin panel, we will see that it is not.
+This is due to the part of get_permissions(self) of the views.py of user app.
+So no matter which things say in the request, we are not going to accept a superuser of True.
+
+So if we put GET in api/user/ will get a list of the actual users.
+If i put a POST, will create a new user. Like a signup.
+
+What about the login?
+We would use the url api/user/login/.
+And will remove the Content-Type, as it is not expected to be application/json.
+
+Then, will put the data inside of the body but no in the Raw format. But in the form-data format.
+For the key we put email and password. And in the Value goes the values in each key/field.
+
+Once we log in a user, if we watch the fields inside of the admin panel we would see that a session token would be assigned.
+
+
 
 Remember that for the login, we have to make a POST request. 
 
