@@ -557,7 +557,7 @@ Another solution would be to run directly the query of sql.
 ### 18. Running a Test of Sign in and Log Out
 We will have the following url: /api/user/ and then login/ or logout/<int:id>/.
 
-If we make a get on /api/users/, we would obtain the user we created in the step before:
+If we make a get on /api/user/, we would obtain the user we created in the step before:
 ```{json}
 [
     {
@@ -571,7 +571,10 @@ If we make a get on /api/users/, we would obtain the user we created in the step
     }
 ]
 ```
+Note that the password does not appear.
 
+
+Remember that for the login, we have to make a POST request. 
 
 #### Auth
 For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
