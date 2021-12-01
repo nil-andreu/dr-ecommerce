@@ -616,7 +616,7 @@ For this we need to send the id of the user as well.
 
 ### 20. Managing orders
 We first are going to create the model of the orders.
-
+Once that, we need to serialize that.
 
 Remember that for the login, we have to make a POST request. 
 The url would be: http://localhost:8000/api/user/logout/1/.
