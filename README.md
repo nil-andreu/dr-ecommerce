@@ -495,6 +495,67 @@ Then we open up the urls.py file in the user.
 ### 16. Registering User App in Admin
 This will create the basic problem in Django, which is when you try to customize the user.
 
+Remember to add in the settings.py, to handle the user with CustomUser.
+
+Then we add in the installed_apps: "api.user".
+
+We would have to reupdate the database. And then do the migrations.
+
+### 17. Creating superuser
+Now that we have created a new database, and make the migrations. It is a challenge to create a super user.
+
+This is typical problem when creating a custom user. This is production is not a big trouble, as the super user is created by running directly a query in the database and assigning priviledges to it.
+
+We will follow these steps:
+a. Delete the database file
+b. Go to the migrations folder of the api. And create a new file called 0001_initial.py.
+c. And write the code that is inside this folder
+
+So when we do the migrations, we will create a superuser:
+```{python}
+from django.db import migrations
+from api.user.models import CustomUser #  Import CustomUser class
+
+# Create a new migration
+class Migration(migrations.Migration):
+
+    '''Create a new method, which has:
+    - apps represents all the apps we have created
+    - schema_editor
+    
+
+    '''
+    def seed_data(apps, schema_editor):
+        # We say that we want a user to be created
+        user = CustomUser(name="Hitesh", 
+            email="hitesh@lco.dev",
+            is_staff=True,
+            is_superuser=True,
+            phone="954433232",
+            gender="Male"
+        )
+
+        # We define the password, and would do all the hashing of the password itself
+        user.set_password("12345")
+        user.save()
+
+    ''' It is going to be dependent on some before migrations
+    We for example can see the dependencies that are necessary will be inside of the file that is in
+    the folder of migrations of the user app.
+    '''
+    dependencies = [
+        
+    ]
+
+    # We also have a part of operations, where we want to run the seed method
+    operations = [migrations.RunPython(seed_data),]
+```
+This way we can create a superuser without python manage.py createsuperuser nor introducing the sql query directly in the database. As migration is the python code that then will be converted to sql queries, so what we have defined is an intermediate layer.
+
+
+Another solution would be to run the sql.
+
+
 
 #### Auth
 For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
