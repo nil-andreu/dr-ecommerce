@@ -571,7 +571,7 @@ If we make a get on /api/user/, we would obtain the user we created in the step 
     }
 ]
 ```
-Note that the password does not appear.
+Note that the password does not appear. This is the usr_dict.
 
 For postman, we set the content-type in the Headers of application/json. 
 Then we go to the Body part, and select Raw. Here, we can see that if we post empty braces {}. For the api/user/ will return for this POST the error that email and password are required.
@@ -610,9 +610,14 @@ For the key we put email and password. And in the Value goes the values in each 
 
 Once we log in a user, if we watch the fields inside of the admin panel we would see that a session token would be assigned.
 
+### 19. Testing Logout
+Now for logot it needs to be a get request.
+For this we need to send the id of the user as well.
 
 
 Remember that for the login, we have to make a POST request. 
+The url would be: http://localhost:8000/api/user/logout/1/.
+And once ran, it will give us the message that Logout was successful.
 
 #### Auth
 For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.

@@ -40,11 +40,12 @@ def signin(request):
 
     # VALIDATION PART
     # We do some of the sanitasation, with re.match() to match the pattern of the regular expression and return True if matches
-    if not re.match("/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g", username):
+    # if not re.match("/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g", username):
+    if not re.match("^[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}$", username):
         return JsonResponse({'error':'Enter a valid email'})
     
     # We could also check for the password (uppercase, lowercase, ...)
-    if not len(password) > 3 :
+    if len(password) < 3 :
         return JsonResponse({"error":"Enter a password of at least 3 characters"})
     
     # ONCE VALIDATION IS PASSED, NOW IS SECURE TO USE USERNAME AND PASSWORD
@@ -57,7 +58,7 @@ def signin(request):
 
         # 2. We need to now check the password
         if user.check_password(password):
-            usr_dict = UserModel.objects.filter(email=username).values().first
+            usr_dict = UserModel.objects.filter(email=username).values().first()
             # Where the filter for the one that matches the username, we obtain the values of it and obtain the first
             usr_dict.pop('password')
 
@@ -103,7 +104,7 @@ def signout(request, id):
         # And update this value in the database
         user.save()
 
-    except UserModel.DoesNoeExist:
+    except UserModel.DoesNotExist:
         return JsonResponse({"error":"Invalid user ID"})
     
     return JsonResponse({"success":"Logout Success"})
@@ -119,6 +120,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         try:
             return [] #For allowing any we could simply put an empty list
+            # This will not give a superuser authorization to the users that sign in
 
 
         except KeyError: # In the exception we give the default permission
