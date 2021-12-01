@@ -541,10 +541,10 @@ class Migration(migrations.Migration):
 
     ''' It is going to be dependent on some before migrations
     We for example can see the dependencies that are necessary will be inside of the file that is in
-    the folder of migrations of the user app.
+    the folder of migrations of the app.
     '''
     dependencies = [
-        
+        # In this case there are no dependencies
     ]
 
     # We also have a part of operations, where we want to run the seed method
@@ -552,9 +552,25 @@ class Migration(migrations.Migration):
 ```
 This way we can create a superuser without python manage.py createsuperuser nor introducing the sql query directly in the database. As migration is the python code that then will be converted to sql queries, so what we have defined is an intermediate layer.
 
+Another solution would be to run directly the query of sql.
 
-Another solution would be to run the sql.
+### 18. Running a Test of Sign in and Log Out
+We will have the following url: /api/user/ and then login/ or logout/<int:id>/.
 
+If we make a get on /api/users/, we would obtain the user we created in the step before:
+```{json}
+[
+    {
+        "name": "Hitesh",
+        "email": "hitesh@lco.dev",
+        "phone": "954433232",
+        "gender": "Male",
+        "is_active": true,
+        "is_staff": true,
+        "is_superuser": true
+    }
+]
+```
 
 
 #### Auth
