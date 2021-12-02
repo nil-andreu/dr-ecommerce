@@ -623,7 +623,7 @@ Finally the url.
 The ones that are going to be able to make orders are the users that are validated. So for this, we have to personalize the views.py --> validate_user_session.
 
 Next, what we would have to do is add all the details which the user is bringing in from the front end and add them into the admin panel.
-For doing this, when the user hits a certain route, we need to execute a method which is reponsible for collecting all the data nad pushing the data in the admin.
+For doing this, when the user hits a certain route, we need to execute a method which is reponsible for collecting all the data nad pushing the data in the admin. This is also in views.py.
 
 
 Remember that for the login, we have to make a POST request. 
