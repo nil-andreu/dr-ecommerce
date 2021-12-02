@@ -57,8 +57,12 @@ def add_order(request, id, token):
             # We construct first this Order
             order = Order(user=user, product_names=products, total_products=total_products, transaction_id=transaction_id, total_amount=amount)
             order.save() # And for that user, we save the order it placed
-            return JsonResponse({"success":True, "error":False}) # We would return that for doing a check
+            return JsonResponse({"success":True, "error":False, "message":"This order placed successfully"}) # We would return that for doing a check
 
 
         except UserModel.DoesNotExist:
             return JsonResponse({"error":"User does not exist"})
+
+class OrderViewset(viewsets.ModelViewSet):
+    query = Order.objects.all().order_by("id")
+    serializer_class = OrderSerializer
