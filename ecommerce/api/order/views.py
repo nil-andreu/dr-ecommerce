@@ -1,3 +1,4 @@
+import json
 from django.http import JsonResponse
 from rest_framework import viewsets
 from .models import Order
@@ -43,3 +44,21 @@ def add_order(request, id, token):
         transaction_id = request.POST["transaction_id"]
         amount = request.POST["amount"]
         products = request.POST["products"]
+
+        # Now we need to compute how many products are
+        total_products = len(products.split(",")[:-1]) # As products is a list and we split by , and -1 is to create a new array of x * 1.
+
+        # We need to grap the user model as well
+        UserModel = get_user_model()
+        try:
+            # If the user exists, then we will pass all the before information to that user
+            user = UserModel.objects.get(pk=user_id)
+
+            # We construct first this Order
+            order = Order(user=user, product_names=products, total_products=total_products, transaction_id=transaction_id, total_amount=amount)
+            order.save() # And for that user, we save the order it placed
+            return JsonResponse({"success":True, "error":False}) # We would return that for doing a check
+
+
+        except UserModel.DoesNotExist:
+            return JsonResponse({"error":"User does not exist"})
