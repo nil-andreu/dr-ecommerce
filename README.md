@@ -54,8 +54,9 @@ As well as we have to put the REST_FRAMEWORK configuration. It will create a def
 - Token Auth: the token based authentification is needed for doing custom auth
 
 ## 4. Define URLs
+We will define the following URL: path('api-auth', include('rest_framework.urls')). Which we will use for using the authentification provided by the Django Rest Framework by default.
 
-We will define the following URL: path('api-auth', include('rest_framework.urls'))
+Later we will handle this authentification by ourselves.
 
 ## 5. How to manage static files
 
