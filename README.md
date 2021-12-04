@@ -13,11 +13,11 @@ We could use Coggle to imagine which will be the parts that will have our app. W
 
 ## 1. Virtual Environment
 
-First we will create a virtual environment to handle the different dependencies:python -m venv dependencies. Which will create a folder of dependencies.
+First we will create a virtual environment to handle the different dependencies:python -m venv dependencies. Which will create a folder of dependencies. Once this is created, we will go the the subfolder of Scripts and in the shell put: activate. This way we will activate the environment in which we are going to run our application.
 
 We will use pipenv to handle the dependencies.
 Once it is installed, we will do: pipenv shell. This will generate us a Pipfile, which will have inside all of the dependencies.
-And now for installing django, we will use the pipenv: pipenv install django==3.2. (where 3.2. is the version we will use).
+And now for installing django, we will use the pipenv: pipenv install django==3.2. (where 3.2. is the version we will use). If we have our virtual environment activated, we could use pip install django==3.2.
 This way we will handle easily the installations and dependencies with pip.
 
 Another way we could handle the dependencies is with a requirements.txt, where we could put: pip freeze > requirements.txt
@@ -625,12 +625,11 @@ The ones that are going to be able to make orders are the users that are validat
 Next, what we would have to do is add all the details which the user is bringing in from the front end and add them into the admin panel.
 For doing this, when the user hits a certain route, we need to execute a method which is reponsible for collecting all the data nad pushing the data in the admin. This is also in views.py.
 
-
 Remember that for the login, we have to make a POST request. 
 The url would be: http://localhost:8000/api/user/logout/1/.
 And once ran, it will give us the message that Logout was successful.
 
 #### Auth
-For making the authentification with Facebook, Google, ... We need to install the pacjage: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
+For making the authentification with Facebook, Google, ... We need to install the package: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
 
 Yoou can also look for the tutorial: https://www.youtube.com/watch?v=wlcCvzOLL8w&list=RDCMUC1mxuk7tuQT2D0qTMgKji3w&start_radio=1.
