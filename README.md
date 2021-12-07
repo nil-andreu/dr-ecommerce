@@ -630,9 +630,11 @@ Remember that for the login, we have to make a POST request.
 The url would be: http://localhost:8000/api/user/logout/1/.
 And once ran, it will give us the message that Logout was successful.
 
+Then we will go the urls.py, and we will have the same structure as the ones we have defined so far. The thing that changes is the paths --> will add for the add_order.
+
 ### (Optional) Creating token with DRF
 It is very common to use the token generator of the DRF to handle the authentification of users with this one.
-For this we are going in the urls.py of the users, and import from rest_framework.authtoken import views. 
+For this we are going in the urls.py of the api, and import from rest_framework.authtoken import views. 
 And then we generate the url of 'api-token-auth/'.
 
 So when we go to this url and provide the username (email in our case) and password, it generates the token.
