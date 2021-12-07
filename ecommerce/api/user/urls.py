@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework.authtoken import views
 
 from . import views
 
@@ -14,5 +15,6 @@ urlpatterns = [
     # For signing out we also have to capture the id of the user, and we would pass it in the url
     path('logout/<int:id>/', views.signout, name="signout"),
     path('', include(router.urls)),
+    path('api-token-auth/', views.obtain_auth_token, name='api_token_auth'),
 
 ]
