@@ -654,3 +654,7 @@ We will use Braintree, which is more difficult to use than for example Stripe. B
 For some documentation check: https://developer.paypal.com/braintree/docs/start/overview.
 
 Where we can see how it works.
+
+We need to install the braintree: pipenv install breintree. And after that we need to put the configuration.
+
+The client token will be generated with gateway.client_token.generate.
