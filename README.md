@@ -639,10 +639,18 @@ And then we generate the url of 'api-token-auth/'.
 
 So when we go to this url and provide the username (email in our case) and password, it generates the token.
 
-THIS IS ONLY FOR THE CASE WE HAVE NOT DEFINED OUR OWN CUSTOM SESSION TOKEN.
+THIS IS ONLY FOR THE CASE WE HAVE NOT DEFINED OUR OWN CUSTOM SESSION TOKEN
 
 
 #### Auth
 For making the authentification with Facebook, Google, ... We need to install the package: https://github.com/RealmTeam/django-rest-framework-social-oauth2. We can see the documentation in this repository README file.
 
 Yoou can also look for the tutorial: https://www.youtube.com/watch?v=wlcCvzOLL8w&list=RDCMUC1mxuk7tuQT2D0qTMgKji3w&start_radio=1.
+
+
+### 21. Payment Gateway
+We will use Braintree, which is more difficult to use than for example Stripe. But the workflow is similar on all the others.
+
+For some documentation check: https://developer.paypal.com/braintree/docs/start/overview.
+
+Where we can see how it works.
