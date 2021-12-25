@@ -109,9 +109,10 @@ We will then create the array of urlpatterns. Where we will have the root/home r
 For creating the home, we have to create it in the views. So we need to go inside of the views.py and create the home view function.
 We put the following: from django.http import JsonResponse
 And then define the view;
-
-    def home(request):
+```{python}
+def home(request):
         return JsonResponse({'info': 'Django course')
+```
 
 Where we import the JsonResponse, and then we will return in the home (localhost:8000/api/) the json which will be the key-value pair.
 
