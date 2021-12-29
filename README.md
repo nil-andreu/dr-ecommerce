@@ -178,7 +178,7 @@ Then we define the CategoryViewSet. The viewset that we are going to define is b
     # 1. Which is the query, the data that we bring from the database
     # 2. Based on the serializer we have wrote, convert this data into JSON
 
-    # 1. Build the query
+    # 1. Build the query --> calling the resource
     queryset = Category.objects.all().order_by('name')
 
     # 2. Define the class responsible for serializing the data
