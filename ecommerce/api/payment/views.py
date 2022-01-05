@@ -16,4 +16,17 @@ gateway = braintree.BraintreeGateway(
   )
 )
 
-# Create your views here.
+# Checking if user is signed up
+def validate_user_session(id, token):
+    UserModel = get_user_model()
+
+    try:
+        user = UserModel.objects.all(pk=id)
+        if user.session_token == token: #if the session token stored in the database is the same as the token that the user is carrying 
+            return True
+        return False
+    except UserModel.DoesNotExist:
+        return False
+    
+@csrf_exempt
+def generate_token(request, id, token):
