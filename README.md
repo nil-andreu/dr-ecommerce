@@ -659,3 +659,7 @@ Where we can see how it works.
 We need to install the braintree: pipenv install breintree. And after that we need to put the configuration.
 
 The client token will be generated with gateway.client_token.generate.
+
+So the first step, would be to install the breaintree with pip: pip install braintree. We would also create a new account in braintree sandbox (not an account for production). Once created, we would obtain a public key.
+
+The modelling is not necessary, but users will be hitting some routes and we need to run some methods for that. We would hand this in the views.py in the payment app.
